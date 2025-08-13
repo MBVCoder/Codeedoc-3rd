@@ -4,12 +4,23 @@ import Home from "@screens/Home";
 import ProtectedRoute from "@config/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import MainLayout from "@components/Mainlayout";
+import ModelDetail from "@screens/Modeldetail";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route
+            path="/model/:id"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <ModelDetail />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/"
             element={
