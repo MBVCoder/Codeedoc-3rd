@@ -37,16 +37,17 @@ const Home = () => {
   return (
     <div>
       <h1 className="text-center text-4xl font-bold">Welcome to Fyne</h1>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-4 mx-5 my-5">
         {models.length > 0 &&
           models.map((model) => (
-            <img
-              key={model._id}
-              src={`${baseModelURL}/${model.thumbnail}`}
-              alt="model"
-              className="w-1/2 h-auto"
-              onClick={() => navigate(`/model/${model._id}`)}
-            />
+            <div className="border-1 border-black rounded-lg" key={model._id}>
+              <img
+                src={`${baseModelURL}/${model.thumbnail}`}
+                alt="model"
+                className="rounded-lg flex-shrink-0 w-full h-auto"
+                onClick={() => navigate(`/model/${model._id}`)}
+              />
+            </div>
           ))}
       </div>
     </div>
