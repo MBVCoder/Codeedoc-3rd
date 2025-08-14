@@ -150,7 +150,7 @@ const ModelDetail = () => {
             <div
               onClick={() => toggleSelect(media._id)}
               key={media._id}
-              className="border rounded-lg p-2 flex flex-col gap-2 "
+              className="border rounded-lg p-2 flex flex-col gap-2 hover:cursor-pointer"
             >
               <div className="self-end mr-1">
                 <input
