@@ -5,12 +5,23 @@ import ProtectedRoute from "@config/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import MainLayout from "@components/Mainlayout";
 import ModelDetail from "@screens/Modeldetail";
+import ModelDescription from "@screens/ModelDescription";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route
+            path="/model/:id/description"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <ModelDescription />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/model/:id"
             element={

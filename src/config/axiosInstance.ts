@@ -1,4 +1,6 @@
+import { setGenerating } from "@store/model/productAiSlice";
 import axios from "axios";
+import store from "@store/index";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL, // from .env
@@ -10,6 +12,7 @@ const api = axios.create({
 // Request Interceptor
 api.interceptors.request.use(
   (request) => {
+    store.dispatch(setGenerating(true));
     const token = localStorage.getItem("token");
     if (token) {
       request.headers.Authorization = `Bearer ${token}`;
@@ -19,12 +22,18 @@ api.interceptors.request.use(
     request.headers["portal"] = "USER";
     return request;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    store.dispatch(setGenerating(false));
+    Promise.reject(error);
+  },
 );
 
 // Response Interceptor
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    store.dispatch(setGenerating(false));
+    return response;
+  },
   (error) => {
     if (error.response?.status === 401) {
       // Handle token expiration
@@ -32,9 +41,9 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       window.location.href = "/login";
     }
+    store.dispatch(setGenerating(false));
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
-

@@ -13,10 +13,10 @@ const Navbar = () => {
   };
   return (
     <div>
-      <nav className="flex flex-row justify-between items-center px-5 py-2 mb-5 border-b-2 border-black">
+      <nav className="flex flex-row justify-between items-center px-5 py-2">
         <img src={logo} alt="logo" className="w-auto h-16 z-10" />
         <h1
-          className="font-semibold text-md bg-red-500 px-2 py-1 my-auto rounded-lg hover:scale-105 transition-all duration-500 hover:cursor-pointer z-10 text-white hover:bg-red-600"
+          className="font-semibold text-md bg-red-500 px-5 py-2 my-auto rounded-lg hover:scale-105 transition-all duration-500 hover:cursor-pointer z-10 text-white hover:bg-red-600"
           onClick={handleClick}
         >
           Logout

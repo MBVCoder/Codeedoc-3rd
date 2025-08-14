@@ -9,6 +9,7 @@ import { setToken } from "@store/auth/authslice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import api from "@config/axiosInstance";
+import Input from "@components/stylingComponents/Input";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export default function Login() {
         password: password,
       })
       .then((res) => {
-        // console.log("Token from the Login : "+res.data.data.token);
+        console.log("Token from the Login : " + res.data.data.token);
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("refreshToken", res.data.data.refreshToken);
         dispatch(setToken(res.data.data));
@@ -33,6 +34,7 @@ export default function Login() {
       })
       .catch((err) => {
         console.error("Login error:", err);
+        toast.error("Login Failed");
       });
   };
 
@@ -88,8 +90,8 @@ export default function Login() {
           </h1>
 
           <p className="text-md text-gray-500">
-            Today is a new day. It's your day. You shape it. <br /> Sign in to start
-            customising & managing your designs.
+            Today is a new day. It's your day. You shape it. <br /> Sign in to
+            start customising & managing your designs.
           </p>
 
           {/* Form */}
@@ -97,41 +99,33 @@ export default function Login() {
             onSubmit={handleSubmit}
             className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
           >
-            <div className="pb-2 pt-4 my-2 flex flex-col gap-2 items-start">
-              <label htmlFor="email">Email :</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email..."
-                className="block w-full p-2 text-lg border-[1px] border-gray-800 text-gray-800 focus:outline-none rounded-sm"
-              />
-            </div>
-            <div className="pb-2 pt-4 my-2 flex flex-col gap-2 items-start">
-              <label htmlFor="email">Password :</label>
-              <input
-                className="block w-full p-2 text-lg border-[1px] border-gray-800 text-gray-800 focus:outline-none rounded-sm"
-                type="password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password..."
-              />
-            </div>
-            <div className="text-right text-gray-800 hover:underline hover:text-black font-semibold">
+            <Input
+              label="Email"
+              type="email"
+              value={email}
+              placeholder="Enter your email..."
+              onChange={(val) => setEmail(val)}
+            />
+            <Input
+              label="Password"
+              type="password"
+              value={password}
+              placeholder="Enter your password..."
+              onChange={(val) => setPassword(val)}
+            />
+            <div className="text-right text-gray-800 hover:underline hover:text-black font-semibold duration-500 transition-all">
               <a href="#">Forgot your password?</a>
             </div>
             <div className=" pb-2 pt-4 my-5">
-              <button className="uppercase block w-full p-2 text-md text-white focus:outline-none hover:cursor-pointer  bg-gradient-to-r from-orange-500 to-purple-500 rounded-sm text-shadow-none tracking-wider">
+              <button className="uppercase block w-full p-2 text-md text-white focus:outline-none hover:cursor-pointer  bg-gradient-to-r from-orange-500 to-purple-500 rounded-sm text-shadow-none tracking-wider hover:brightness-80 duration-500 ">
                 sign in
               </button>
             </div>
-            <div className="text-center text-gray-800 hover:underline hover:text-black font-semibold flex items-center justify-center">
-              <p className="text-gray-400 mr-2">Don't have an account?</p>
-              <a href="#" className="underline">Create Account</a>
+            <div className="text-center text-gray-800  hover:text-black font-semibold flex items-center justify-center">
+              <p className="text-gray-400 text-sm mr-2">Don't have an account?</p>
+              <a href="#" className="hover:underline text-sm">
+                Create Account
+              </a>
             </div>
 
             {/* Social Icons on Mobile */}
