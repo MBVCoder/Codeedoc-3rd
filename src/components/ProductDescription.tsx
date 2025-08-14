@@ -29,11 +29,11 @@ const ProductDescription = ({ data }: { data: any }) => {
   const selectedLangData = languages[language];
 
   return (
-    <div className=" h-screen">
+    <div className=" h-screen relative">
       <div className="flex justify-center items-center">
         <Title text="Product Ai Description" />
       </div>
-      <div className=" p-6 bg-black/10 rounded-xl shadow-md max-w-3xl mx-auto flex flex-col gap-5 border-[1px] border-black">
+      <div className=" p-6 bg-black/10 rounded-xl shadow-md max-w-3xl mx-auto flex flex-col gap-5 border-[1px] border-black relative z-30">
         {/* Language Selector */}
         <div className="flex justify-end mb-4">
           <LanguageMenu
@@ -92,6 +92,10 @@ const ProductDescription = ({ data }: { data: any }) => {
           </div>
         </div>
       </div>
+      <div className="absolute max-2xl:hidden bottom-30 right-75 size-40 rounded-full bg-gradient-to-tr from-orange-600 to-purple-600 blur-2xl animate-pulse opacity-70 duration-100 transition-all z-0"></div>
+      <div className="absolute max-2xl:hidden top-20 left-75 size-40 rounded-full bg-gradient-to-tr from-orange-600 to-purple-600 blur-2xl animate-pulse opacity-70 duration-100 transition-all z-0"></div>
+      <div className="absolute max-2xl:hidden bottom-10 left-95 size-20 rounded-full bg-gradient-to-tr from-orange-600 to-purple-600 blur-2xl animate-pulse opacity-70 duration-100 transition-all z-0"></div>
+      <div className="absolute max-2xl:hidden bottom-50 right-185 size-20 rounded-full bg-gradient-to-tr from-orange-600 to-purple-600 blur-2xl animate-pulse opacity-70 duration-100 transition-all z-0"></div>
     </div>
   );
 };
