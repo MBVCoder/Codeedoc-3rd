@@ -29,7 +29,8 @@
       "@screens/*": ["screens/*"],
       "@store/*": ["store/*"],
       "@config/*": ["config/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@customHooks/*": ["customHooks/*"],
     }
   },
   "include": ["src"]

@@ -68,3 +68,29 @@ export default tseslint.config([
 ])
 ```
 # Codeedoc-3rd
+
+
+Fyne description
+
+* login (POST)
+https://edited-festival-types-kernel.trycloudflare.com/user/auth/test-login
+{
+    "email": "testom2@yopmail.com",
+    "password": "Test@123"
+}
+
+* model list (GET)
+https://edited-festival-types-kernel.trycloudflare.com/user/models/list?limit=20&page=1&search=
+filter = asc,dec \ category
+
+* medial list(GET)
+https://edited-festival-types-kernel.trycloudflare.com/user/models/mediaList?type=IMAGES&modelId=6899b5bdeb43acd016d64977&limit=20&page=1
+
+* generate description (POST)
+https://edited-festival-types-kernel.trycloudflare.com/user/productAiDescription/generate
+{
+    "modelId": "6899b5bdeb43acd016d64977",
+    "productImageKeys": [
+        "6899b0197ff60d555b110cb5/6899b5bdeb43acd016d64977/images/8abc3d29-40fa-43f1-ae3a-7e58e327de95-EOFUUID-test-model.png"
+    ]
+}

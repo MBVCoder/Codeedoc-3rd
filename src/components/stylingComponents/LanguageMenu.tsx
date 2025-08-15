@@ -3,7 +3,7 @@ import { Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/r
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const LanguageMenu = ({ language, setLanguage, data }) => {
-  const languages = ["en", ...Object.keys(data.translations || {})];
+  const languages = ["en", ...Object.keys(data.data.translations || {})];
 
   return (
     <Menu as="div" className="relative inline-block text-left">

@@ -36,7 +36,7 @@ const Home = () => {
   // );
 
   return (
-    <div>
+    <div className="">
       <Title text="Welcome to Fyne" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mx-5 my-5">
         {models.length > 0 &&

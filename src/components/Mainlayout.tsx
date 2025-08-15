@@ -10,15 +10,17 @@ export default function MainLayout({
   const generating = useSelector((state: any) => state.productAi.generating);
   return (
     <>
-      <div className="relative h-screen px-5">
+    <div className="flex justify-center items-center w-full h-full">
+      <div className="px-5 pt-20 max-w-[1600px] max-h-[1000px]">
         <Navbar />
         <main>{children}</main>
         {generating && (
-          <div className="absolute top-0 left-0 w-full h-screen bg-black/50 z-20">
+          <div className="absolute top-0 left-0 w-full h-screen bg-black/50 z-50">
             <Loader />
           </div>
         )}
       </div>
+    </div>
     </>
   );
 }

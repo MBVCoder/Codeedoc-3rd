@@ -28,15 +28,19 @@ const Input = ({
   return (
     <div className="pb-2 pt-4 my-2 flex flex-col gap-2 items-start">
       <label htmlFor={inputId}>{label}:</label>
-      <input
-        type={type}
-        name={inputId}
-        id={inputId}
-        value={internalValue}
-        onChange={handleChange}
-        placeholder={placeholder}
-        className="block w-full p-2 text-lg border border-gray-800 text-gray-800 focus:outline-none rounded-sm focus:border-gray-300"
-      />
+      <div className="w-full rounded-sm border border-gray-300 focus-within:border-transparent focus-within:bg-gradient-to-r focus-within:from-orange-400 focus-within:to-purple-400">
+        <div className="rounded-sm bg-white p-0.5">
+          <input
+            type={type}
+            name={inputId}
+            id={inputId}
+            value={internalValue}
+            onChange={handleChange}
+            placeholder={placeholder}
+            className="block w-full p-2 text-lg focus:outline-none bg-white rounded-sm"
+          />
+        </div>
+      </div>
     </div>
   );
 };

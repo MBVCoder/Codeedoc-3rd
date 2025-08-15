@@ -119,7 +119,7 @@ const ModelDetail = () => {
   };
 
   return (
-    <div className="px-6 relative">
+    <div className="px-6 relative mb-10">
       <div className="flex flex-col items-center my-6">
         <Title text="Generate Product Ai Description" />
         <p className="text-md xl:text-lg text-center mb-5 text-gray-700">

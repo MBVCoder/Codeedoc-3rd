@@ -3,12 +3,15 @@ import { useSelector } from "react-redux";
 import { type RootState } from "@store/index";
 import { Title } from "./stylingComponents/Title";
 import LanguageMenu from "./stylingComponents/LanguageMenu";
+import useViewport from "@customHooks/useViewport";
 
 const ProductDescription = ({ data }: { data: any }) => {
   const selectedMedia = useSelector(
     (state: RootState) => state.productAi.selectedMedia,
   );
+  console.log(data);
   const [language, setLanguage] = useState("en");
+  const viewportSize = useViewport();
 
   // console.log(selectedMedia);
 
@@ -19,17 +22,21 @@ const ProductDescription = ({ data }: { data: any }) => {
   // Prepare language mapping
   const languages = {
     en: {
-      title: data.title,
-      description: data.description,
-      hashtags: data.hashtags,
+      title: data.data.title,
+      description: data.data.description,
+      hashtags: data.data.hashtags,
     },
-    ...data.translations,
+    ...data.data.translations,
   };
 
   const selectedLangData = languages[language];
 
   return (
-    <div className=" h-screen relative">
+    <div
+      className={`${
+        viewportSize.height < 813 ? "h-screen" : "h-[813px]"
+      } relative mb-10`}
+    >
       <div className="flex justify-center items-center">
         <Title text="Product Ai Description" />
       </div>
@@ -68,15 +75,15 @@ const ProductDescription = ({ data }: { data: any }) => {
 
           <div className="my-5">
             <h2 className="text-3xl font-bold my-3 font-roboto">
-              {selectedLangData.title}
+              {selectedLangData?.title}
             </h2>
 
             <p className="text-gray-400 my-4 font-outfit">
-              {selectedLangData.description.summary}
+              {selectedLangData?.description?.summary}
             </p>
 
             <p className="text-gray-900 my-4 font-outfit">
-              {selectedLangData.description.detailed}
+              {selectedLangData?.description?.detailed}
             </p>
 
             <div className="flex flex-wrap gap-2 mt-4">
